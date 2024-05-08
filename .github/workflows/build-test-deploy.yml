@@ -25,3 +25,12 @@ jobs:
           node-version: '18.x'
       - run: npm install
       - run: npm test
+    
+  deploy:
+    runs-on: ubuntu-latest
+    needs: test
+    steps:
+      - name: checkout repo
+        uses: actions/checkout@v3
+        with:
+          token: ${{secrets.GITHUB_TOKEN}}
